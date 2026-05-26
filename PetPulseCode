@@ -1,0 +1,39 @@
+classDiagram
+    class PharmacyScreen {
+        +select(Drug)
+    }
+    class ManageDrugsClass {
+        +init()
+        +searchDrugs()
+    }
+    class DrugsScreen {
+        +showDrugDetails()
+        +clickOrder()
+    }
+    class DBManager {
+        +queryDrugs()
+        +addOrderedItems()
+    }
+    class ManageOrderClass {
+    }
+    class OrderScreen {
+        +display()
+        +order(quantity)
+        -checkOrderQuantity()
+    }
+    class Order {
+    }
+    class ConfirmationScreen {
+        +display()
+    }
+
+    PharmacyScreen --> ManageDrugsClass : καλεί
+    ManageDrugsClass --> DBManager : καλεί
+    ManageDrugsClass ..> DrugsScreen : <<create>>
+    ManageDrugsClass ..> ManageOrderClass : <<create>>
+    
+    ManageOrderClass ..> OrderScreen : <<create>>
+    OrderScreen --> ManageOrderClass : στέλνει ποσότητα
+    ManageOrderClass --> DBManager : αποθηκεύει
+    ManageOrderClass ..> Order : <<create>>
+    ManageOrderClass ..> ConfirmationScreen : <<create>>
