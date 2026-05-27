@@ -34,4 +34,14 @@ public class DBManager {
         System.out.println("Αποθήκευση αίτησης: " + quantity + " τεμάχια για το φάρμακο " + drugId);
         return "statusOk";
     }
+        public String fetchVetProfile() {
+        // SQL query για τράβηγμα στοιχείων κτηνιάτρου
+        return "current_vet_profile_data";
+    }
+
+    public void saveVetChanges(String data) {
+        // SQL update για αποθήκευση αλλαγών κτηνιάτρου [cite: 99]
+        System.out.println("Οι αλλαγές του κτηνιάτρου αποθηκεύτηκαν στη βάση");
+    }
+
 }
