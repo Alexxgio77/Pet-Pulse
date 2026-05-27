@@ -7,10 +7,11 @@ public class AppointmentsScreen {
         this.controller = controller;
     }
 
-    public void display(List<Appointment> appointments) {
-        // Στήσιμο της λίστας ολοκληρωμένων ραντεβού στην οθόνη
+    public void display(List<Appointment> myAppointments) {
+        // Εμφάνιση της λίστας με τα προγραμματισμένα ραντεβού
     }
 
+    // Καλείται με την επιλογή ενός ραντεβού από τη λίστα
     public void selectAppointment(Appointment appointment) {
         controller.returnSelection(appointment);
     }
