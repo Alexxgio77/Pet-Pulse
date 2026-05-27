@@ -3,10 +3,10 @@ public class OrderManager {
 
     public void sendOrder(String drugId, int quantity, DrugScreen screen) {
         // Προώθηση της παραγγελίας στη βάση
-        String status = dbManager.saveOrderRequest(drugId, quantity); // [cite: 133]
+        String status = dbManager.saveOrderRequest(drugId, quantity); 
         
         if (status.equals("statusOk")) {
-            screen.successMessage(); // [cite: 134]
+            screen.successMessage(); 
         }
     }
 }
