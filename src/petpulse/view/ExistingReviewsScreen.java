@@ -8,12 +8,12 @@ public class ExistingReviewsScreen {
     }
 
     public void display() {
-        // Δείχνει το μήνυμα «Το ραντεβού έχει ήδη αξιολογηθεί»[cite: 53].
+        // Δείχνει το μήνυμα «Το ραντεβού έχει ήδη αξιολογηθεί»
     }
 
-    // Ο χρήστης επιλέγει «Επεξεργασία αξιολόγησης»[cite: 54].
+    // Ο χρήστης επιλέγει «Επεξεργασία αξιολόγησης»
     public void clickEditReview() {
-        // Εμφανίζει τη φόρμα με τις προηγούμενες καταχωρήσεις του χρήστη[cite: 55].
+        // Εμφανίζει τη φόρμα με τις προηγούμενες καταχωρήσεις του χρήστη
         ReviewScreen reviewScreen = new ReviewScreen(controller, appointment);
         reviewScreen.displayWithExistingData("Προηγούμενα σχόλια χρήστη", 4);
     }
