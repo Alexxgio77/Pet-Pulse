@@ -22,4 +22,22 @@ public class ProfileManager {
             page.errorMessage(); [cite: 74]
         }
     }
+      } private DBManager dbManager = new DBManager();
+
+    // Ανάκτηση στοιχείων κτηνιάτρου (βιογραφικό, τηλέφωνο, email, εξειδίκευση) [cite: 92, 96]
+    public void retrieveVetProfileData() {
+        String vetData = dbManager.fetchVetProfile();
+        
+        ProfilePage profilePage = new ProfilePage(this);
+        profilePage.displayVetForm(vetData);
+    }
+
+    public void onVetDataValidated(boolean isValid, String newVetData, ProfilePage page) {
+        if (isValid) {
+            dbManager.saveVetChanges(newVetData);
+            page.successMessage();
+            System.out.println("Επιτυχής Αποθήκευση Αλλαγών"); // [cite: 99]
+        } else {
+            page.errorMessage(); // [cite:102] 
+    }
 }
