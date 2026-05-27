@@ -1,15 +1,8 @@
 public class HomeScreen {
-    private PetManager petManager = new PetManager();
+    private ManageAppointmentsClass controller = new ManageAppointmentsClass();
 
-    // Ο κτηνίατρος κάνει κλικ στην επιλογή «Έκδοση Συνταγής» [cite: 109]
-    public void clickPrescription() {
-        petManager.getExaminedPets();
+    // Ο χρήστης επιλέγει από το αρχικό μενού την επιλογή «Αξιολόγηση Ραντεβού»[cite: 42].
+    public void clickReviewAppointment() {
+        controller.showMyAppointments();
     }
-    private ProfileManager profileManager = new ProfileManager();
-
-    // Ο χρήστης επιλέγει την «Επεξεργασία Προφίλ» από το μενού [cite: 67, 74]
-    public void clickEditProfile() {
-        profileManager.retrieveProfileData(); [cite: 74]
-    }
-
 }
