@@ -6,14 +6,14 @@ public class ConfScreen {
     }
 
     public void display() {
-        // Το σύστημα ζητάει επιβεβαίωση [cite: 115]
+        // Το σύστημα ζητάει επιβεβαίωση 
     }
 
     public void clickConfirm() {
-        manager.confirm(); [cite: 116]
+        manager.confirm(); 
     }
 
     public void clickCancel() {
-        manager.cancel(); [cite: 124]
+        manager.cancel(); 
     }
 }
