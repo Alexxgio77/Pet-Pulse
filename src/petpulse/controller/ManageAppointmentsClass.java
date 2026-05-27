@@ -2,19 +2,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManageAppointmentsClass {
-    
-    // Το σύστημα εμφανίζει μια λίστα με όλα τα ραντεβού που έχει πραγματοποιήσει[cite: 43].
+    private Appointment selectedAppointment;
+    private HomeScreen homeScreen = new HomeScreen();
+
+    // Ανάκτηση και εμφάνιση των κλεισμένων ραντεβού
     public void showMyAppointments() {
-        List<Appointment> completedAppointments = new ArrayList<>();
-        // Εδώ τραβάμε τα δεδομένα από το AppointmentsDB
+        // Προσομοίωση findMyAppointments() από το AppointmentsDB
+        List<Appointment> myAppointments = new ArrayList<>();
+        // Υποθέτουμε ότι η λίστα γεμίζει με τα υπάρχοντα ραντεβού από τη βάση
         
         AppointmentsScreen appScreen = new AppointmentsScreen(this);
-        appScreen.display(completedAppointments);
+        appScreen.display(myAppointments);
     }
 
-    // Ο χρήστης επιλέγει το ραντεβού που θέλει να αξιολογήσει[cite: 44].
+    // Καλείται όταν ο χρήστης επιλέξει ποιο ραντεβού θέλει να διαγράψει
     public void returnSelection(Appointment appointment) {
-        ManageReviewScreen reviewScreen = new ManageReviewScreen();
-        reviewScreen.checkReviewExistence(appointment);
+        this.selectedAppointment = appointment;
+        
+        ConfirmationScreen confScreen = new ConfirmationScreen(this);
+        confScreen.display();
+    }
+
+    // Καλείται αν ο χρήστης πατήσει "Επιβεβαίωση" στο alt block
+    public void confirm() {
+        // Προσομοίωση removeAppointment() στο AppointmentsDB
+        System.out.println("Διαγραφή από τη βάση του ραντεβού");
+        selectedAppointment.setStatus("Ακυρωμένο");
+        
+        System.out.println("Το ραντεβού ακυρώθηκε επιτυχώς");
+        homeScreen.display();
+    }
+
+    // Καλείται αν ο χρήστης πατήσει "Ακύρωση" στο alt block
+    public void cancel() {
+        System.out.println("Η διαδικασία ακυρώθηκε");
+        showMyAppointments(); // Επιστροφή στη λίστα ραντεβού
     }
 }
