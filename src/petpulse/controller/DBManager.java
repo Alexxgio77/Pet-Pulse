@@ -24,4 +24,14 @@ public class DBManager {
     public void saveAndSend() {
         // SQL query για αποθήκευση και σύνδεση με το προφίλ του ιδιοκτήτη [cite: 117]
     }
+    public String fetchDrugs() {
+        // Ανάκτηση του γενικού καταλόγου φαρμάκων που προμηθεύεται η κλινική [cite: 131]
+        return "general_clinic_drugs_catalog";
+    }
+
+    public String saveOrderRequest(String drugId, int quantity) {
+        // Το σύστημα στέλνει την αίτηση στο προφίλ της γραμματείας [cite: 133]
+        System.out.println("Αποθήκευση αίτησης: " + quantity + " τεμάχια για το φάρμακο " + drugId);
+        return "statusOk";
+    }
 }
