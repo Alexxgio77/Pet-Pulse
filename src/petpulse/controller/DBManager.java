@@ -8,5 +8,20 @@ public class DBManager {
     public String saveChanges(String data) {
         // SQL query για update των στοιχείων στο database [cite: 71, 74]
         return "statusOk"; [cite: 74]
+
+    public String fetchPets(String vetId) {
+        return "examined_pets_data";
+    }
+
+    public String fetchDrugs() {
+        return "clinic_drugs_data";
+    }
+
+    public void submitPrescription() {
+        // Καταχώρηση συνταγής στη βάση δεδομένων
+    }
+
+    public void saveAndSend() {
+        // SQL query για αποθήκευση και σύνδεση με το προφίλ του ιδιοκτήτη [cite: 117]
     }
 }
