@@ -1,11 +1,11 @@
 public class DrugManager {
     private DBManager dbManager = new DBManager();
 
-    // Το σύστημα ανακτά τη λίστα με τα φάρμακα και τη διαθεσιμότητά τους [cite: 112]
+    // Το σύστημα ανακτά τη λίστα με τα φάρμακα και τη διαθεσιμότητά τους 
     public void getAvailableDrugs() {
         String drugsData = dbManager.fetchDrugs();
         
-        // Δημιουργία και εμφάνιση της οθόνης φαρμάκων [cite: 112]
+        // Δημιουργία και εμφάνιση της οθόνης φαρμάκων 
         DrugScreen drugScreen = new DrugScreen();
         drugScreen.display(drugsData);
     }
@@ -15,7 +15,7 @@ public class DrugManager {
     public void init() {
         String drugsData = dbManager.fetchDrugs();
         DrugScreen drugScreen = new DrugScreen(this);
-        drugScreen.display(drugsData); // [cite: 131]
+        drugScreen.display(drugsData); // 
     }
 
     public void makeOrder(String drugId, int quantity, DrugScreen screen) {
