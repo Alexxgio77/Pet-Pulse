@@ -1,16 +1,16 @@
 public class DrugScreen {
 
     public void display(String drugsData) {
-        // Εμφάνιση της λίστας φαρμάκων στο UI [cite: 112]
+        // Εμφάνιση της λίστας φαρμάκων στο UI 
     }
 
-    // Ο κτηνίατρος επιλέγει φάρμακο, ποσότητα και εισάγει οδηγίες [cite: 113, 114]
+    // Ο κτηνίατρος επιλέγει φάρμακο, ποσότητα και εισάγει οδηγίες 
     public void selectDrug(String details) {
         UploadManager uploadManager = new UploadManager();
         uploadManager.prepConf();
     }
 
-    // Εναλλακτική Ροή 1: Το φάρμακο είναι εκτός διαθεσιμότητας [cite: 119]
+    // Εναλλακτική Ροή 1: Το φάρμακο είναι εκτός διαθεσιμότητας 
     public void clickRequestOrder() {
         UploadManager uploadManager = new UploadManager();
         uploadManager.initiateOrderReq();
@@ -22,17 +22,17 @@ public class DrugScreen {
         this.manager = manager;
     }
 
-    // Το σύστημα εμφανίζει τη λίστα με τον γενικό κατάλογο των φαρμάκων [cite: 131]
+    // Το σύστημα εμφανίζει τη λίστα με τον γενικό κατάλογο των φαρμάκων 
     public void display(String catalogData) {
         // UI rendering του καταλόγου
     }
 
-    // Ο χρήστης επιλέγει το φάρμακο, την ποσότητα και πατάει αποστολή [cite: 132]
+    // Ο χρήστης επιλέγει το φάρμακο, την ποσότητα και πατάει αποστολή 
     public void selectDrugAndQuant(String drugId, int quantity) {
         manager.makeOrder(drugId, quantity, this);
     }
 
-    // Εναλλακτική Ροή 1: Ο χρήστης πατάει ακύρωση [cite: 136]
+    // Εναλλακτική Ροή 1: Ο χρήστης πατάει ακύρωση 
     public void clickCancel() {
         manager.cancel(this);
     }
