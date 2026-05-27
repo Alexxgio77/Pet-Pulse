@@ -23,4 +23,29 @@ public class ProfilePage {
     public void errorMessage() {
         // Εμφάνιση κατάλληλου μηνύματος σφάλματος [cite: 73, 74]
     }
+    private ProfileManager manager;
+    private ValidationClass validator = new ValidationClass();
+
+    public ProfilePage(ProfileManager manager) {
+        this.manager = manager;
+    }
+
+    public void displayVetForm(String vetData) {
+        // Εμφάνιση φόρμας με βιογραφικό και εξειδίκευση [cite: 92, 96]
+    }
+
+    // Ο χρήστης τροποποιεί τα πεδία και πατάει επιβεβαίωση [cite: 97]
+    public void inputVetChangesAndConfirm(String newVetData) {
+        boolean isValid = validator.validateVetData(newVetData);
+        manager.onVetDataValidated(isValid, newVetData, this); // [cite: 98]
+    }
+
+    public void successMessage() {
+        // Pop-up επιτυχίας [cite: 99]
+    }
+
+    public void errorMessage() {
+        // Μήνυμα σφάλματος για μη έγκυρα δεδομένα [cite: 102]
+    }
+
 }
