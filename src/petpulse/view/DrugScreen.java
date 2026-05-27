@@ -15,4 +15,30 @@ public class DrugScreen {
         UploadManager uploadManager = new UploadManager();
         uploadManager.initiateOrderReq();
     }
+    
+    private DrugManager manager;
+
+    public DrugScreen(DrugManager manager) {
+        this.manager = manager;
+    }
+
+    // Το σύστημα εμφανίζει τη λίστα με τον γενικό κατάλογο των φαρμάκων [cite: 131]
+    public void display(String catalogData) {
+        // UI rendering του καταλόγου
+    }
+
+    // Ο χρήστης επιλέγει το φάρμακο, την ποσότητα και πατάει αποστολή [cite: 132]
+    public void selectDrugAndQuant(String drugId, int quantity) {
+        manager.makeOrder(drugId, quantity, this);
+    }
+
+    // Εναλλακτική Ροή 1: Ο χρήστης πατάει ακύρωση [cite: 136]
+    public void clickCancel() {
+        manager.cancel(this);
+    }
+
+    // Το σύστημα εμφανίζει μήνυμα επιτυχούς αποστολής [cite: 134]
+    public void successMessage() {
+        System.out.println("Η αίτηση παραγγελίας στάλθηκε επιτυχώς στη γραμματεία.");
+    }
 }
