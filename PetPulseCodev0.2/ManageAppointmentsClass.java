@@ -6,37 +6,77 @@ public class ManageAppointmentsClass {
     private Pet selectedPet;
     private Appointment selectedAppointment;
 
-    // UC 1
     public void findAvailableAppointments(Pet pet) {
         this.selectedPet = pet;
-        List<String> availableSlots = new ArrayList<>();
-        availableSlots.add("15/06/2026 09:00");
-        availableSlots.add("15/06/2026 11:30");
+        List<String> availableSlots = dbManager.fetchAvailableSlots();
+        
+        if (availableSlots.isEmpty()) {
+            System.out.println("\n❌ Δεν υπάρχουν διαθέσιμα ραντεβού αυτή τη στιγμή!");
+            new HomeScreen().display();
+            return;
+        }
         new AvailableSlotsScreen(this).display(availableSlots);
     }
+
     public void returnSelection(String dateTime) {
         dbManager.saveAppointment(new Appointment(dateTime, selectedPet));
+        dbManager.removeAvailableSlot(dateTime);
         new AppointmentBookingConfirmationScreen().display();
     }
 
-    // UC 2
     public void showMyAppointments() {
-        new ActiveAppointmentsSelectionScreen(this).display(dbManager.fetchAppointments());
+        List<Appointment> allAppointments = dbManager.fetchAppointments();
+        List<Appointment> scheduledOnly = new ArrayList<>();
+        
+        for (Appointment app : allAppointments) {
+            if (app.getStatus().equalsIgnoreCase("Προγραμματισμένο")) {
+                scheduledOnly.add(app);
+            }
+        }
+
+        if (scheduledOnly.isEmpty()) {
+            System.out.println("\n❌ Δεν βρέθηκαν ενεργά προγραμματισμένα ραντεβού για ακύρωση!");
+            new HomeScreen().display();
+            return;
+        }
+
+        new ActiveAppointmentsSelectionScreen(this).display(scheduledOnly);
     }
+
     public void returnSelection(Appointment appointment) {
         this.selectedAppointment = appointment;
         new AppointmentCancellationConfirmationScreen(this).display();
     }
-    public void confirm() {
-        selectedAppointment.setStatus("Ακυρωμένο");
-        new HomeScreen().display();
-    }
-    public void cancel() { new HomeScreen().display(); }
 
-    // UC 3
-    public void showAppointmentsForReview() {
-        new CompletedAppointmentsSelectionScreen(this).display(dbManager.fetchAppointments());
+    public void confirm() { 
+        selectedAppointment.setStatus("Ακυρωμένο"); 
+        System.out.println("\n✔ Το ραντεβού ακυρώθηκε με επιτυχία.");
+        new HomeScreen().display(); 
     }
+    
+    public void cancel() { 
+        new HomeScreen().display(); 
+    }
+
+    public void showAppointmentsForReview() {
+        List<Appointment> allAppointments = dbManager.fetchAppointments();
+        List<Appointment> completedOnly = new ArrayList<>();
+        
+        for (Appointment app : allAppointments) {
+            if (app.getStatus().equalsIgnoreCase("Ολοκληρωμένο")) {
+                completedOnly.add(app);
+            }
+        }
+
+        if (completedOnly.isEmpty()) {
+            System.out.println("\n❌ Δεν υπάρχουν ολοκληρωμένα ραντεβού προς αξιολόγηση!");
+            new HomeScreen().display();
+            return;
+        }
+
+        new CompletedAppointmentsSelectionScreen(this).display(completedOnly);
+    }
+
     public void returnSelectionForReview(Appointment appointment) {
         new ManageReviewScreen().checkReviewExistence(appointment);
     }
