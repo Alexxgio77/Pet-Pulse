@@ -8,12 +8,11 @@ public class DBManager {
     public static List<Drug> drugsTable = new ArrayList<>();
     public static List<String> weeklyProgram = new ArrayList<>();
     public static List<Order> ordersTable = new ArrayList<>();
-    
-    // ΝΕΑ ΛΙΣΤΑ: Οι διαθέσιμες ώρες για ραντεβού
     public static List<String> availableSlotsTable = new ArrayList<>();
 
     public static String ownerName = "Γιάννης Παπαδόπουλος";
     public static String ownerPhone = "6912345678";
+    public static String ownerEmail = "giannis.pap@email.com";
     public static String vetBio = "Κτηνίατρος με 10 χρόνια εμπειρία στα μικρά ζώα.";
 
     static {
@@ -28,7 +27,6 @@ public class DBManager {
         
         weeklyProgram.add("Δευτέρα: Πρωί - Κενό | Απόγευμα - Κενό");
 
-        // Αρχικό γέμισμα των διαθέσιμων ωρών
         availableSlotsTable.add("15/06/2026 09:00");
         availableSlotsTable.add("15/06/2026 11:30");
         availableSlotsTable.add("16/06/2026 14:00");
@@ -38,7 +36,6 @@ public class DBManager {
     public void saveAppointment(Appointment app) { appointmentsTable.add(app); }
     public List<Appointment> fetchAppointments() { return appointmentsTable; }
     
-    // ΝΕΕΣ ΜΕΘΟΔΟΙ: Ανάκτηση και αφαίρεση ωρών
     public List<String> fetchAvailableSlots() { return availableSlotsTable; }
     public void removeAvailableSlot(String slot) { availableSlotsTable.remove(slot); }
 
