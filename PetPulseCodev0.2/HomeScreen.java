@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class HomeScreen {
+    // Επαναφορά της μεταβλητής που χρειάζεται η Main
+    public static int currentRole;
 
     public void display() {
         Scanner scanner = new Scanner(System.in);
@@ -13,6 +15,8 @@ public class HomeScreen {
             System.out.print("Επιλογή (1-4): ");
             
             int role = scanner.nextInt();
+            currentRole = role; // Ενημέρωση της μεταβλητής
+            
             if (role == 1) {
                 ownerMenu();
             } else if (role == 2) {
