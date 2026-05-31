@@ -36,11 +36,11 @@ public class HomeScreen {
         while (true) {
             System.out.println("\n=================================");
             System.out.println("--- ΚΕΝΤΡΙΚΟ ΜΕΝΟΥ ΙΔΙΟΚΤΗΤΗ ---");
-            System.out.println("1. Προγραμματισμός Ραντεβού (UC 1)");
-            System.out.println("2. Ακύρωση Ραντεβού (UC 2)");
-            System.out.println("3. Αξιολόγηση Ραντεβού (UC 3)");
-            System.out.println("4. Επεξεργασία Προφίλ (UC 4)");
-            System.out.println("5. Προβολή Ιστορικού Κατοικιδίου (UC 5)");
+            System.out.println("1. Προγραμματισμός Ραντεβού");
+            System.out.println("2. Ακύρωση Ραντεβού");
+            System.out.println("3. Αξιολόγηση Ραντεβού");
+            System.out.println("4. Επεξεργασία Προφίλ");
+            System.out.println("5. Προβολή Ιστορικού Κατοικιδίου");
             System.out.println("6. Αποσύνδεση");
             System.out.print("Επιλογή: ");
             
@@ -110,8 +110,4 @@ public class HomeScreen {
             } else if (ch == 3) {
                 return;
             } else {
-                System.out.println("Λάθος αριθμός. Παραμένετε στο μενού Γραμματείας.");
-            }
-        }
-    }
-}
+                System.out.println("Λάθος αριθμός.
