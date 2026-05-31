@@ -74,9 +74,9 @@ public class HomeScreen {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n--- ΜΕΝΟΥ ΚΤΗΝΙΑΤΡΟΥ ---");
-            System.out.println("1. Προβολή Πελατών & Κατοικιδίων");
-            System.out.println("2. Επεξεργασία Προφίλ Κτηνιάτρου");
-            System.out.println("3. Προβολή Εξετασμένων Κατοικιδίων");
+            System.out.println("1. Προβολή Ιστορικού Κατοικιδίων");
+            System.out.println("2. Επεξεργασία Προφίλ");
+            System.out.println("3. Ηλεκτρονική Συνταγογράφηση");
             System.out.println("4. Αποσύνδεση");
             System.out.print("Επιλογή (1-4): ");
             
@@ -99,8 +99,8 @@ public class HomeScreen {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n--- ΜΕΝΟΥ ΓΡΑΜΜΑΤΕΙΑΣ ---");
-            System.out.println("1. Διαχείριση Φαρμακείου");
-            System.out.println("2. Προβολή Εβδομαδιαίου Προγράμματος");
+            System.out.println("1. Διαχείριση Φαρμάκων");
+            System.out.println("2. Διαχείριση Ωραρίου");
             System.out.println("3. Αποσύνδεση");
             System.out.print("Επιλογή (1-3): ");
             
