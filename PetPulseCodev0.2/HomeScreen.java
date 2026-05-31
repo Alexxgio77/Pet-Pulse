@@ -13,16 +13,18 @@ public class HomeScreen {
             System.out.println("4. Έξοδος Εφαρμογής");
             System.out.print("Επιλογή (1-4): ");
             
-            int role = scanner.nextInt();
-            currentRole = role;
+            String role = scanner.nextLine().trim();
             
-            if (role == 1) {
+            if (role.equals("1")) {
+                currentRole = 1;
                 ownerMenu();
-            } else if (role == 2) {
+            } else if (role.equals("2")) {
+                currentRole = 2;
                 vetMenu();
-            } else if (role == 3) {
+            } else if (role.equals("3")) {
+                currentRole = 3;
                 staffMenu();
-            } else if (role == 4) {
+            } else if (role.equals("4")) {
                 System.out.println("Έξοδος από την εφαρμογή.");
                 System.exit(0);
             } else {
@@ -44,26 +46,26 @@ public class HomeScreen {
             System.out.println("6. Αποσύνδεση");
             System.out.print("Επιλογή: ");
             
-            int ch = scanner.nextInt();
-            if (ch == 1) {
+            String ch = scanner.nextLine().trim();
+            if (ch.equals("1")) {
                 ManageAppointmentsClass mac = new ManageAppointmentsClass();
                 if (!DBManager.petsTable.isEmpty()) {
                     mac.findAvailableAppointments(DBManager.petsTable.get(0));
                 } else {
                     System.out.println("Δεν υπάρχουν καταχωρημένα κατοικίδια.");
                 }
-            } else if (ch == 2) {
+            } else if (ch.equals("2")) {
                 new ManageAppointmentsClass().showMyAppointments();
-            } else if (ch == 3) {
+            } else if (ch.equals("3")) {
                 new ManageAppointmentsClass().showAppointmentsForReview();
-            } else if (ch == 4) {
+            } else if (ch.equals("4")) {
                 new ProfileManager().retrieveProfileData();
-            } else if (ch == 5) {
+            } else if (ch.equals("5")) {
                 new PetManager().getPets();
-            } else if (ch == 6) {
+            } else if (ch.equals("6")) {
                 return; 
             } else {
-                System.out.println("Λάθος αριθμός. Παραμένετε στο μενού Ιδιοκτήτη.");
+                System.out.println("Λάθος επιλογή. Παραμένετε στο μενού Ιδιοκτήτη.");
             }
         }
     }
@@ -78,17 +80,17 @@ public class HomeScreen {
             System.out.println("4. Αποσύνδεση");
             System.out.print("Επιλογή (1-4): ");
             
-            int ch = scanner.nextInt();
-            if (ch == 1) {
+            String ch = scanner.nextLine().trim();
+            if (ch.equals("1")) {
                 new PetManager().getPets();
-            } else if (ch == 2) {
+            } else if (ch.equals("2")) {
                 new ProfileManager().retrieveVetProfileData();
-            } else if (ch == 3) {
+            } else if (ch.equals("3")) {
                 new PetManager().getExaminedPets();
-            } else if (ch == 4) {
+            } else if (ch.equals("4")) {
                 return;
             } else {
-                System.out.println("Λάθος αριθμός. Παραμένετε στο μενού Κτηνιάτρου.");
+                System.out.println("Λάθος επιλογή. Παραμένετε στο μενού Κτηνιάτρου.");
             }
         }
     }
@@ -102,12 +104,16 @@ public class HomeScreen {
             System.out.println("3. Αποσύνδεση");
             System.out.print("Επιλογή (1-3): ");
             
-            int ch = scanner.nextInt();
-            if (ch == 1) {
+            String ch = scanner.nextLine().trim();
+            if (ch.equals("1")) {
                 new ManagedDrugsClass().init();
-            } else if (ch == 2) {
+            } else if (ch.equals("2")) {
                 new ProgramManager().getProgram();
-            } else if (ch == 3) {
+            } else if (ch.equals("3")) {
                 return;
             } else {
-                System.out.println("Λάθος αριθμός.
+                System.out.println("Λάθος επιλογή. Παραμένετε στο μενού Γραμματείας.");
+            }
+        }
+    }
+}
