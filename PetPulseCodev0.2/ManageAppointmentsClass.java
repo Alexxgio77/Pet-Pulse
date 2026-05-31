@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ManageAppointmentsClass {
     private DBManager dbManager = new DBManager();
@@ -12,8 +13,7 @@ public class ManageAppointmentsClass {
         
         if (availableSlots.isEmpty()) {
             System.out.println("\n❌ Δεν υπάρχουν διαθέσιμα ραντεβού αυτή τη στιγμή!");
-            new HomeScreen().display();
-            return;
+            return; 
         }
         new AvailableSlotsScreen(this).display(availableSlots);
     }
@@ -21,7 +21,7 @@ public class ManageAppointmentsClass {
     public void returnSelection(String dateTime) {
         dbManager.saveAppointment(new Appointment(dateTime, selectedPet));
         dbManager.removeAvailableSlot(dateTime);
-        new AppointmentBookingConfirmationScreen().display();
+        System.out.println("\n✔ Το ραντεβού προγραμματίστηκε με επιτυχία!");
     }
 
     public void showMyAppointments() {
@@ -36,8 +36,7 @@ public class ManageAppointmentsClass {
 
         if (scheduledOnly.isEmpty()) {
             System.out.println("\n❌ Δεν βρέθηκαν ενεργά προγραμματισμένα ραντεβού για ακύρωση!");
-            new HomeScreen().display();
-            return;
+            return; 
         }
 
         new ActiveAppointmentsSelectionScreen(this).display(scheduledOnly);
@@ -45,17 +44,28 @@ public class ManageAppointmentsClass {
 
     public void returnSelection(Appointment appointment) {
         this.selectedAppointment = appointment;
-        new AppointmentCancellationConfirmationScreen(this).display();
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("\nΕίστε σίγουροι ότι θέλετε να ακυρώσετε το ραντεβού στις " + appointment.getDateTime() + ";");
+        System.out.println("1. Ναι, Επιβεβαίωση");
+        System.out.println("2. Όχι, Επιστροφή");
+        System.out.print("Επιλογή: ");
+        int conf = scanner.nextInt();
+        
+        if (conf == 1) {
+            confirm();
+        } else {
+            cancel();
+        }
     }
 
     public void confirm() { 
         selectedAppointment.setStatus("Ακυρωμένο"); 
         System.out.println("\n✔ Το ραντεβού ακυρώθηκε με επιτυχία.");
-        new HomeScreen().display(); 
     }
     
     public void cancel() { 
-        new HomeScreen().display(); 
+        System.out.println("\nΗ ακύρωση του ραντεβού διακόπηκε.");
     }
 
     public void showAppointmentsForReview() {
@@ -70,8 +80,7 @@ public class ManageAppointmentsClass {
 
         if (completedOnly.isEmpty()) {
             System.out.println("\n❌ Δεν υπάρχουν ολοκληρωμένα ραντεβού προς αξιολόγηση!");
-            new HomeScreen().display();
-            return;
+            return; 
         }
 
         new CompletedAppointmentsSelectionScreen(this).display(completedOnly);
