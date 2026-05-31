@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class HomeScreen {
-    // Επαναφορά της μεταβλητής που χρειάζεται η Main
     public static int currentRole;
 
     public void display() {
@@ -15,7 +14,7 @@ public class HomeScreen {
             System.out.print("Επιλογή (1-4): ");
             
             int role = scanner.nextInt();
-            currentRole = role; // Ενημέρωση της μεταβλητής
+            currentRole = role;
             
             if (role == 1) {
                 ownerMenu();
@@ -35,27 +34,28 @@ public class HomeScreen {
     private void ownerMenu() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("\n--- ΜΕΝΟΥ ΙΔΙΟΚΤΗΤΗ ---");
-            System.out.println("1. Διαχείριση Κατοικιδίων");
-            System.out.println("2. Προγραμματισμός Ραντεβού");
-            System.out.println("3. Ακύρωση Ραντεβού");
-            System.out.println("4. Επεξεργασία Προφίλ");
-            System.out.println("5. Προβολή Ιστορικού");
+            System.out.println("\n=================================");
+            System.out.println("--- ΚΕΝΤΡΙΚΟ ΜΕΝΟΥ ΙΔΙΟΚΤΗΤΗ ---");
+            System.out.println("1. Προγραμματισμός Ραντεβού (UC 1)");
+            System.out.println("2. Ακύρωση Ραντεβού (UC 2)");
+            System.out.println("3. Αξιολόγηση Ραντεβού (UC 3)");
+            System.out.println("4. Επεξεργασία Προφίλ (UC 4)");
+            System.out.println("5. Προβολή Ιστορικού Κατοικιδίου (UC 5)");
             System.out.println("6. Αποσύνδεση");
-            System.out.print("Επιλογή (1-6): ");
+            System.out.print("Επιλογή: ");
             
             int ch = scanner.nextInt();
             if (ch == 1) {
-                new ManagePetsClass().init();
-            } else if (ch == 2) {
                 ManageAppointmentsClass mac = new ManageAppointmentsClass();
                 if (!DBManager.petsTable.isEmpty()) {
                     mac.findAvailableAppointments(DBManager.petsTable.get(0));
                 } else {
                     System.out.println("Δεν υπάρχουν καταχωρημένα κατοικίδια.");
                 }
-            } else if (ch == 3) {
+            } else if (ch == 2) {
                 new ManageAppointmentsClass().showMyAppointments();
+            } else if (ch == 3) {
+                new ManageAppointmentsClass().showAppointmentsForReview();
             } else if (ch == 4) {
                 new ProfileManager().retrieveProfileData();
             } else if (ch == 5) {
